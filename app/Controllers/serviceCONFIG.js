@@ -18,6 +18,18 @@ let serviceController = {
 
     }
 
+     DeleteService:function (req, res) {
+  Service.findOneAndRemove({ service_id : req.body.id }, 
+function(err ,service){
+    if (err){
+     res.render('error')
+     console.log("error");
+ }
+   else{
+     res.redirect('/myservices')  }
+ })
+}
+
 }
 
 module.exports = serviceController;
