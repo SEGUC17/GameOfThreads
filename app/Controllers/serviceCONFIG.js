@@ -3,7 +3,7 @@ let Service = require('../Model/service.js');
 
 let serviceController = {
 
-  viewMyServices:function( req  ,  res){
+   viewMyServices:function( req , res){
 
       Service.find( { Buisness_name :req.body.Buisness_name} , function(err, services){
 
@@ -16,18 +16,24 @@ let serviceController = {
 
             })
 
-    }
+    },
 
-     DeleteService:function (req, res) {
-  Service.findOneAndRemove({ service_id : req.body.id }, 
+
+   DeleteService:function (req, res) {
+Service.findOneAndRemove(req.params.id , //findOneAndRemove
 function(err ,service){
-    if (err){
-     res.render('error')
-     console.log("error");
+
+console.log(req.params.id +   "  request");
+
+  if (err){
+   res.render('error')
+   console.log("error");
  }
-   else{
-     res.redirect('/myservices')  }
- })
+ else{
+
+      console.log("deleted");
+   res.redirect('/myservices')  }
+})
 }
 
 }
