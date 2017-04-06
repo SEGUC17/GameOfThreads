@@ -5,6 +5,7 @@ var router = express.Router();
 var passportC = require('passport');
 
 var servicesConfig = require('./Controller/serviceCONFIG.js');
+var reviewsConfig = require('./Controller/reviewsConfig.js');
 
 
 router.get('/', function(req, res) {
@@ -21,7 +22,15 @@ router.get('/loginCust', function(req, res, next) {
   console.log("login customer");
 });
 
+router.post('/reviews' , reviewsConfig.writeReview, function(req, res, next)
+{
+  console.log(" revieww addedd");
+});
 
+router.get('/reviews', function(req, res, next) {
+  res.render('reviews');
+  console.log("add The reviewss");
+});
 
 router.post('/signupCust', passportC.authenticate('local-signupC', {
   successRedirect: '/profileCust',
