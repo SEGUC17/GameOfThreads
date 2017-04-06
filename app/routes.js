@@ -44,6 +44,30 @@ router.post('/loginCust', passportC.authenticate('local-loginC', {
   failureFlash: true,
 }));
 
+router.get('/login', function(req, res, next) {
+  res.render('login' , { message: req.flash('loginMessage') });
+  console.log("login");
+});
+router.get('/profile', function(req, res, next) {
+  res.render('profile' , { user: req.user });
+  console.log("view profile");
+});
+router.get('/myservices', servicesConfig.viewMyServices , function(req, res, next) {
+  console.log("index got");
+});
+
+
+router.get('/delete/:id' , servicesConfig.DeleteService, function(req, res, next)
+{
+  console.log("deletted");
+});
+
+router.post('/login', passport.authenticate('local-login', {
+
+  successRedirect: '/profile',
+  failureRedirect: '/login',
+  failureFlash: true,
+}));
 
 
 function isLoggedIn(req, res, next) {
