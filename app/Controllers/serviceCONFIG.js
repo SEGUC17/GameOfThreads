@@ -48,7 +48,21 @@ console.log(req.params.id +   "  request");
       console.log("deleted");
    res.redirect('/myservices')  }
 })
-}
+} , UpdateServices:function( req  ,  res){
+        var Newservices = req.body;
+        var service_ID = req.params.id ;
+        Service.update( service_ID , Newservices, function(err, service) {
+          console.log(req.params.id +   "  request");
+
+            if (!err) {
+                res.render('index')
+              //  res.json("okay");
+
+            } else {
+                res.write("fail");
+            }
+        });
+    }
 
 }
 
