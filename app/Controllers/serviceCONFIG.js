@@ -17,6 +17,20 @@ let serviceController = {
             })
 
     },
+    postMyService:function(req, res){
+        let service = new Service(req.body);
+
+        service.save(function(err, service){
+            if(err){
+                res.send(err.message)
+                console.log(err);
+            }
+            else{
+                res.redirect('/myservices');
+                console.log(service);
+                console.log("service posted");
+} })
+    },
 
 
    DeleteService:function (req, res) {
