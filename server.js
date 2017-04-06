@@ -8,6 +8,15 @@ var multer = require('multer');
 var upload = multer({dest:__dirname+'./app/index'});
 //var RedisStore = require('connect-redis')(express);
 
+var  util    =   require('util');
+ var FacebookStrategy  =   require('passport-facebook').Strategy;
+
+ var expressValidator = require('express-validator');
+
+
+var configDB = require('./controller/database.js');
+
+var port     = process.env.PORT || 8080;
 //??
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -33,6 +42,13 @@ connections = [];
 mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://localhost:27017/myNewDB");
 
+require('./controller/passportt')(passport); // pass passport for configuration
+
+
+
+
+app.use(require('serve-static')(__dirname + '/../../public'));
+
 app.set('views', __dirname + '/Views');
 app.set('view engine', 'ejs');
     app.use(logger('dev'));
@@ -57,6 +73,12 @@ app.use(session({ secret: 'shhsecret'  , resave: true,
     app.use('/', routes);
 
 
+app.use(function (err, req, res, next) {
+ console.log('Time:', Date.now());
+   // next();  
+
+  }
+);
     app.get ('/', function (req, res)
     {
       res.sendFile( __dirname + '/index.html');
