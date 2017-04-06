@@ -4,8 +4,18 @@ var router = express.Router();
 
 var passportC = require('passport');
 
+var rateController = require('./controller/rateController');
+var bodyParser = require('body-parser').json();
+var bookController = require('./controller/bookController');
+
 var servicesConfig = require('./Controller/serviceCONFIG.js');
 var reviewsConfig = require('./Controller/reviewsConfig.js');
+
+//Mirna w Henar
+
+router.post('/rating',bodyParser,rateController.rateService);
+
+router.post('/booking',bodyParser,bookController.book);
 
 
 router.get('/', function(req, res) {
