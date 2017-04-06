@@ -20,7 +20,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var flash = require('connect-flash');
 var session = require('express-session');
 
-var routes = require('./app/index.js');
+var routes = require('./app/routes.js');
 //var users = require('./routers/users');
 
 var app = express();
@@ -49,7 +49,7 @@ app.use(session({ secret: 'shhsecret'  , resave: true,
 
 
     app.use('/', routes);
-  
+
     app.listen(3000 , function(){
     console.log("Degwii running at 3000..!!");
     });
