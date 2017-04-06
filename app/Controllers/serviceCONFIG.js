@@ -17,6 +17,20 @@ let serviceController = {
             })
 
     },
+    postMyService:function(req, res){
+        let service = new Service(req.body);
+
+        service.save(function(err, service){
+            if(err){
+                res.send(err.message)
+                console.log(err);
+            }
+            else{
+                res.redirect('/myservices');
+                console.log(service);
+                console.log("service posted");
+} })
+    },
 
 
    DeleteService:function (req, res) {
@@ -34,7 +48,21 @@ console.log(req.params.id +   "  request");
       console.log("deleted");
    res.redirect('/myservices')  }
 })
-}
+} , UpdateServices:function( req  ,  res){
+        var Newservices = req.body;
+        var service_ID = req.params.id ;
+        Service.update( service_ID , Newservices, function(err, service) {
+          console.log(req.params.id +   "  request");
+
+            if (!err) {
+                res.render('index')
+              //  res.json("okay");
+
+            } else {
+                res.write("fail");
+            }
+        });
+    }
 
 }
 

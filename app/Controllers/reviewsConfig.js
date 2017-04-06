@@ -17,7 +17,21 @@ let reviewController = {
                 console.log("review posted");
 } })
 
-} 
+} ,
+viewAllReviews:function(req, res){
+    Review.find( /*{ 'Buissnes_Name ': User.Buissnes_Name }  ,*/ function(err, reviews){
+
+        if(err)
+            res.send(err.message);
+        else{
+            res.render('allReviews', {reviews});
+console.log(reviews);
+console.log("Method valid");
+          }
+    })
+
+
+  }
 }
 
 module.exports = reviewController;
