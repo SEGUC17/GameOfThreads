@@ -8,15 +8,6 @@ var multer = require('multer');
 var upload = multer({dest:__dirname+'./app/index'});
 //var RedisStore = require('connect-redis')(express);
 
-var  util    =   require('util');
- var FacebookStrategy  =   require('passport-facebook').Strategy;
-
- var expressValidator = require('express-validator');
-
-
-var configDB = require('./controller/database.js');
-
-var port     = process.env.PORT || 8080;
 //??
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -29,25 +20,15 @@ var LocalStrategy = require('passport-local').Strategy;
 var flash = require('connect-flash');
 var session = require('express-session');
 
-var routes = require('./app/routes.js');
+var routes = require('./app/index.js');
 //var users = require('./routers/users');
-
-var app = express();
-
 var server = require ('http').createServer(app);
 var io = require ('socket.io').listen (server);
 users = [];
 connections = [];
-
+var app = express();
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://localhost:27017/myNewDB");
-
-require('./controller/passportt')(passport); // pass passport for configuration
-
-
-
-
-app.use(require('serve-static')(__dirname + '/../../public'));
+mongoose.connect("mongodb://localhost:27017/testdb");
 
 app.set('views', __dirname + '/Views');
 app.set('view engine', 'ejs');
@@ -71,53 +52,36 @@ app.use(session({ secret: 'shhsecret'  , resave: true,
 
 
     app.use('/', routes);
-
-
-app.use(function (err, req, res, next) {
- console.log('Time:', Date.now());
-   // next();  
-
-  }
-);
-    app.get ('/', function (req, res)
-    {
-      res.sendFile( __dirname + '/index.html');
+    //app.use('/users', users);
+/*
+    app.use(function(req, res, next) {
+      var err = new Error('Not Found');
+      err.status = 404;
+      next(err);
     });
 
-    io.sockets.on ('connection', function(socket){
-      connections.push (socket);
-
-      console.log ('connected: %s sockets connected', connections.length);
-
-    //Disconnect
-      socket.on('disconnect', function (data){
-
-        users.splice(users.indexOf(socket.username), 1);
-        updateUsernames();
-        connections.splice (connections.indexOf(socket), 1);
-        console.log ('Disconnected: %s sockets connected', connections.length);
+    if (app.get('env') === 'development') {
+      app.use(function(err, req, res, next) {
+        res.status(err.status || 500);
+        res.render('error', {
+          message: err.message,
+          error: err,
+        });
       });
-      // send message
-      socket.on('send message', function (data){
-        console.log(data);
-        io.sockets.emit ('new message', {msg: data, user: socket.username});
+    }
+
+    app.use(function(err, req, res, next) {
+      res.status(err.status || 500);
+      res.send("error", {
+        message: err.message,
+        error: {},
       });
+    });
 
-      //New User
-      socket.on('new user', function(data,callback){
-        callback(true);
-        socket.username = data;
-        users.push(socket.username);
-        updateUsernames();
-      });
-
-      function updateUsernames(){
-        io.sockets.emit('get users', users);
-      }
-
-      });
+}*/
 
 
-    app.listen(3000 , function(){
-    console.log("Degwii running at 3000..!!");
+
+    app.listen(8080 , function(){
+    console.log("Degwii running at 8080..!!");
     });

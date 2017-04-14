@@ -1,0 +1,32 @@
+<% include partials/head %>
+
+  <body>
+    <div class="col-sm-8 col-sm-offset-2">
+      <div class="text-center">
+        <h1 class=" fa fa-user"> Profile</h1><br>
+
+            <p><a href = "/addServices"> ADD services or packages </a></p>
+            <p><a href = "/myservices"> our packages</a></p>
+
+
+                           <a href='/allReviews' class="btn btn-default">
+
+                           </span> ALL THE WRITTEN REVIEWS </a>
+                       </form>
+
+      <p>
+        <span class="fa fa-sign-out"><a href="/"> Sign out</a></span>
+      </p>
+        <hr>
+        <div class="jumbotron">
+          <% if (user.local.Buisness_name != null) { %>
+            <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTIPC9dfZ8EF2X4lJBCMo5gBEJ-vSOLMHX3mw2qVe7crwV-XaYcJg
+            "<%= user.local.email %>/140" class="img-circle"><br>
+            <strong> THE </strong>: <%= user.local.Buisness_name %><br>
+          <% } %>
+
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

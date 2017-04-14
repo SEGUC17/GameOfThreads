@@ -1,4 +1,4 @@
-let Client = require('../model/client');
+let Client = require('../Model/user');
 //let Work = require('../model/work');
 //let User = require('../model/user');
 
@@ -8,19 +8,22 @@ let homeController = {
 
     	if(req.query.search){
 
-    		console.log("search");
+    		//console.log("search");
           //  eval(require('locus'));
 
-    		Client.find({name: new RegExp('^'+req.query.search+'$', "i")}, function(err, searchresults) {
-
+    		//Client.find({Buisness_name: new RegExp('^'+req.query.search+'$', "i")}, function(err, searchresults) {
+          Client.findOne({ 'local.Buisness_name':  req.query.search }, function(err, searchresults) {
   				 if(err)
 
 	                res.send(err.message);
 
-	            else
-
+	            else{
+                if(searchresults == null)
+                  console.log("No Results");
+                  else
+                  console.log("Search Result: " + searchresults);
 	                res.render('search.ejs', {searchresults, pagetitle: "Home", user : req.user, search: req.query.search});
-
+}
 			});
 
     	} else{
@@ -34,7 +37,7 @@ let homeController = {
 
 	                res.send(err.message);
 
-	            else	            	
+	            else
 
 	               	res.render('search.ejs', {clients, pagetitle: "Home", user : req.user});
 
