@@ -7,7 +7,7 @@ var userSchema = mongoose.Schema({
     Buisness_location:String,
     Buisness_website: String,
     created_at: Date,
-    Flag : Boolean,
+    Flag : false,
     email: String,
     password: String,
   },

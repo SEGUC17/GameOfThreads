@@ -9,12 +9,6 @@ var customerSchema = mongoose.Schema({
     email: String,
     password: String,
   },
-facebook         : {
-        id           : String,
-        token        : String,
-        email        : String,
-        name         : String
-    }
 });
 
 customerSchema.methods.generateHash = function(password) {

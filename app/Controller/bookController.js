@@ -1,11 +1,11 @@
-let booking = require('../model/booking');
+let booking = require('../Model/booking');
 
 let bookController = {
 
     	book:function(req, res){
-        let Book = new booking(req.body); 
+        let Book = new booking(req.body);
 
-        Book.save(function(err,Book){ 
+        Book.save(function(err,Book){
             if(err){
                 res.send(err.message)
                 console.log(err);
@@ -13,7 +13,7 @@ let bookController = {
             else{
 
                 console.log(Book);
-                
+
             }
         })
     }

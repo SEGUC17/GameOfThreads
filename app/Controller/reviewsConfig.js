@@ -1,4 +1,5 @@
 let Review = require('../Model/review');
+let User = require('../Model/user');
 
 
 let reviewController = {

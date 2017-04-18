@@ -1,4 +1,4 @@
-let rating = require('../model/rating');
+let rating = require('../Model/rating');
 
 let rateController = {
 
@@ -13,7 +13,7 @@ let rateController = {
             else{
 
                 console.log(rate);
-                
+
             }
         })
     }
