@@ -18,11 +18,14 @@ let homeController = {
 	                res.send(err.message);
 
 	            else{
-                if(searchresults == null)
+                if(searchresults == null){
                   console.log("No Results");
+                  res.json("There are no results matching your search. Please try again.");
+                }
                   else
-                  console.log("Search Result: " + searchresults);
-	                res.render('search.ejs', {searchresults, pagetitle: "Home", user : req.user, search: req.query.search});
+                    console.log("Search Result: " + searchresults);
+                  res.json(searchresults);
+                 // res.render('search.ejs', {searchresults, pagetitle: "Home", user : req.user, search: req.query.search});
 }
 			});
 
@@ -34,12 +37,10 @@ let homeController = {
 	         Client.find(function(err, clients) {
 
   				 if(err)
-
 	                res.send(err.message);
-
 	            else
-
-	               	res.render('search.ejs', {clients, pagetitle: "Home", user : req.user});
+	             //  	res.render('search.ejs', {clients, pagetitle: "Home", user : req.user});
+             res.json(clients);
 
 			});
 

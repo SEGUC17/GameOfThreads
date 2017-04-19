@@ -17,6 +17,10 @@ App.config(function($routeProvider,$locationProvider){
   .when('/clientsignin',{
     templateUrl:'/public/Views/Requests.html'
 
-  });
+  })
+
+.when('/sresults',{
+	 	templateUrl: 'public/Views/SResults.html'
+	 });
 
 });
