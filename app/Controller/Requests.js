@@ -10,7 +10,7 @@ User.find({}).exec(function( err , users){
   {
     console.log("error fel method");  }
     else {
-      res.render('Requested' , {
+      res.json('users' , {
         "users": users
       });
       //console.log(users);
@@ -18,9 +18,9 @@ User.find({}).exec(function( err , users){
     }
 });
 
-/*
 
-      User.find({} , { Flag : false } , function(err , users) {
+
+      User.find( { Flag : false } , function(err , users) {
 var userMap = {};
 users.forEach(function(user){
   userMap[user._id] = user ;
@@ -28,7 +28,7 @@ users.forEach(function(user){
 res.render('Requested' , {userMap});
 console.log(userMap);
 //res.send(userMap);
-    });*/
+    });
   },
 
   verifyRequest:function (req, res) {
