@@ -12,10 +12,18 @@ var Request = require("./Controller/Requests.js");
 var homeController= require('./Controller/homeController');
 router.get('/search',homeController.getAllClients);
 
-router.get('/', function(req, res) {
-  res.render('index');
-  console.log("START");
-});
+// router.get('/', function(req, res) {
+//   res.render('index');
+//   console.log("START");
+// });
+
+
+router.use(express.static(__dirname+'/../'));  
+ router.get('/', function(req, res) {  
+  res.sendFile('index.html');   
+  console.log("START"); });
+
+
 
 router.get('/signup', function(req, res, next) {
   res.render('signup', { message: req.flash('loginMessage') });
@@ -121,19 +129,34 @@ router.post('/update' , servicesConfig.UpdateServices, function(req, res, next)
 });
 
 router.get('/signupCust', function(req, res, next) {
-  res.render('signupCust', { message: req.flash('loginMessage') });
-  console.log("signup customer");
-});
+
+  if (err) {
+            res.send(err);
+        }
+
+        res.json({message:"Error"});
+  });
 
 router.get('/loginCust', function(req, res, next) {
-  res.render('logincust' , { message: req.flash('loginMessage') });
+
+  //res.json(customer);
+  // res.sendFile('usersignin.html' , { message: req.flash('loginMessage') });
   console.log("login customer");
+
+  if (err) {
+            res.send(err);
+        }
+
+        res.json({message:"confirmation"});
 });
 
 router.get('/profileCust', function(req, res, next) {
-  res.render('profileCust' , { user: req.user });
+
+  //res.render('profileCust' , { user: req.user });
+  res.json({ user: req.user });
   console.log("view profile of customer");
 });
+
 
 router.post('/reviews' , reviewsConfig.writeReview , function(req, res, next)
 {
