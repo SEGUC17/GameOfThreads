@@ -4,6 +4,7 @@ App.factory('SearchService', function($http){
 			return $http.get('/search?search=' + searchitem);
 		},
 
+
 		setSearchItem: function(value){
 			this.searchitem = value;
 		},

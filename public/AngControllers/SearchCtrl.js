@@ -2,6 +2,8 @@ App.controller('SearchCtrl', function($scope, $location, SearchService){
 	console.log('entered search ctrl');
 
 	$scope.Results= function(){
+
+
 		
 	var searchitem = SearchService.getSearchItem();
 

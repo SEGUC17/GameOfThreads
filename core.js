@@ -3,6 +3,8 @@ App.config(function($routeProvider,$locationProvider){
 	$locationProvider.hashPrefix('');
 	$routeProvider 
 
+
+
 	 .when('/',{    
 
 	 	templateUrl: 'public/Views/Homepage.html'
