@@ -12,6 +12,12 @@ var Request = require("./Controller/Requests.js");
 var homeController= require('./Controller/homeController');
 router.get('/search',homeController.getAllClients);
 
+
+
+var viewServiceProviders = require('./Controller/viewServiceProviders');
+router.get('/viewAllClients', viewServiceProviders.getSP);
+
+
 // router.get('/', function(req, res) {
 //   res.render('index');
 //   console.log("START");

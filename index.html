@@ -15,7 +15,9 @@
        <script src= "../public/AngControllers/userfacebookCtrl.js"></script>
        <script src= "../public/AngControllers/userprofileCtrl.js"></script>
        <script src= "../public/Services/usersignupService.js"></script>
-        <script src= "../public/Services/usersigninService.js"></script>
+       <script src= "../public/Services/usersignupService.js"></script>
+        <script src= "../public/Services/AllClientService.js"></script>
+       <script src= "../public/AngControllers/AllClientCtrl.js"></script>        
 
        
     <meta charset="UTF-8">
@@ -51,6 +53,10 @@
 
 <div class="w3-sidebar w3-bar-block w3-card-2 w3-animate-left" style="display:none" id="mySidebar">
 <button class="w3-bar-item w3-button w3-large"onclick="w3_close()">Close &times;</button>
+<div  ng-controller= 'AllClientCtrl'>
+
+<button ng-click = "viewClients()" class= "w3-button w3-black">View Service Providers</button>
+</div>
 
 <a href="/Homepage" class="w3-bar-item w3-button">Mainpage</a>
 

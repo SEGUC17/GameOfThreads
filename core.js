@@ -49,6 +49,10 @@ var App = angular.module('App',['ngRoute']);
         controller : "HomepageCtrl"
   })  
     
+  .when('/ServiceProviders', {
+    templateUrl: 'public/Views/ServiceProviders.html',
+    controller: 'AllClientCtrl'
+   })
     
     
      });
