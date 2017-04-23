@@ -1,10 +1,8 @@
 var express = require('express');
 //Project attribute
 var router = express.Router();
-
 var passport = require('passport');
 var passportC = require('passport');
-
 var servicesConfig = require('./Controller/serviceCONFIG.js');
 var reviewsConfig = require('./Controller/reviewsConfig.js');
 var Request = require("./Controller/Requests.js");
@@ -12,10 +10,9 @@ var Request = require("./Controller/Requests.js");
 var homeController= require('./Controller/homeController');
 router.get('/search',homeController.getAllClients);
 
-router.get('/', function(req, res) {
-  res.render('index');
-  console.log("START");
-});
+var viewServiceProviders = require('./Controller/viewServiceProviders');
+router.get('/clients', viewServiceProviders.getSP);
+
 
 router.get('/signup', function(req, res, next) {
   res.render('signup', { message: req.flash('loginMessage') });
@@ -189,13 +186,22 @@ router.post('/login', passport.authenticate('local-login', {
   failureFlash: true,
 }));
 
-
-
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated())
       return next();
   res.redirect('/');
 }
+
+//ANGULAR
+
+router.use(express.static(__dirname+'/../'));
+
+router.get('/', function(req, res) {   
+  res.sendFile('index.html');   
+  console.log("START"); 
+});
+
+
 
 
 module.exports = router;
