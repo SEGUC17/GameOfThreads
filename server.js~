@@ -26,6 +26,7 @@ var server = require ('http').createServer(app);
 var io = require ('socket.io').listen (server);
 users = [];
 connections = [];
+var app = express();
 var stripe = require("stripe")("sk_test_0wLgiF1ZwwIyJooEn4hiFuBt");
 var bodyParser = require("body-parser");
 var app = express(), handlebars;
