@@ -2,13 +2,12 @@ var mongoose = require('mongoose');
 var bcrypt   = require('bcrypt-nodejs');
 
 var customerSchema = mongoose.Schema({
-  local: {
+  
     Name:String,
     Address:String,
     PhoneNumber: Number,
     email: String,
     password: String,
-  },
 });
 
 customerSchema.methods.generateHash = function(password) {
@@ -16,7 +15,7 @@ customerSchema.methods.generateHash = function(password) {
 };
 
 customerSchema.methods.validPassword = function(password) {
-  return bcrypt.compareSync(password, this.local.password);
+  return bcrypt.compareSync(password, this.password);
 };
 var Customer = mongoose.model('Customer', customerSchema);
 

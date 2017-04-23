@@ -161,41 +161,90 @@ router.get('/verify/:id' , Request.verifyRequest, function(req, res, next)
   console.log("verifiedd");
 });
 
+// process the login form as Business
+app.post("/login", passport.authenticate('local-login'), function(req, res) {
+  res.json(req.user);
+});
 
-router.post('/signupCust', passportC.authenticate('local-signupC', {
-  successRedirect: '/profileCust',
-  failureRedirect: '/signupCust',
-  failureFlash: true,
-}));
-router.post('/loginCust', passportC.authenticate('local-loginC', {
+// handle logout as Business
+app.post("/logout", function(req, res) {
+  req.logOut();
+  res.send(200);
+})
 
-  successRedirect: '/profileCust',
-  failureRedirect: '/loginCust',
-  failureFlash: true,
-}));
+// loggedin as business
+app.get("/loggedin", function(req, res) {
+  res.send(req.isAuthenticated() ? req.user : '0');
+});
 
+// signup as business
+app.post("/signup", function(req, res) {
+db.User.findOne({
+    email: req.body.email
+  }, function(err, user) {
+    if (user) {
+      res.json(null);
+      return;
+    } else {
+      var newUser = new db.User();
+      newUser.Business_Name = req.body.Business_Name;
+      newUser.Business_Location = req.body.Business_Location;
+      newUser.Business_website = req.body.Business_website;
+      newUser.created_at = req.body.created_at;
+      newUser.email = req.body.email;
+      newUser.password = newUser.generateHash(req.body.password);
+      newUser.save(function(err, user) {
+        req.login(user, function(err) {
+          if (err) {
+            return next(err);
+          }
+          res.json(user);
+        });
+      });
+    }
+  });
+});
 
-router.post('/signup', passport.authenticate('local-signup', {
-  successRedirect: '/',
-  failureRedirect: '/signup',
-  failureFlash: true,
-}));
+// process the login form for customer
+app.post("/loginCust", passportC.authenticate('local-loginCust'), function(req, res) {
+  res.json(req.customer);
+});
 
+// handle logout for customer
+app.post("/logoutCust", function(req, res) {
+  req.logOut();
+  res.send(200);
+})
 
-router.post('/login', passport.authenticate('local-login', {
-
-  successRedirect: '/profile',
-  failureRedirect: '/login',
-  failureFlash: true,
-}));
-
-
-
-function isLoggedIn(req, res, next) {
-  if (req.isAuthenticated())
-      return next();
-  res.redirect('/');
-}
-
+// loggedin for customer
+app.get("/loggedinCust", function(req, res) {
+  res.send(req.isAuthenticated() ? req.customer : '0');
+});
+    // signup customerr
+    app.post("/signupCust", function(req, res) {
+      db.Customer.findOne({
+        email: req.body.email
+      }, function(err, customer) {
+        if (customer) {
+          res.json(null);
+          return;
+        } else {
+          var newCustomer = new db.Customer();
+          newCustomer.Name = req.body.Name;
+          newCustomer.Address = req.body.Address;
+          newCustomer.PhoneNumber = req.body.PhoneNumber;
+          newCustomer.email = req.body.email;
+          newCustomer.password = newCustomer.generateHash(req.body.password);
+          newCustomer.save(function(err, newCustomer) {
+            req.login(newCustomer, function(err) {
+              if (err) {
+                return next(err);
+              }
+              res.json(newCustomer);
+            });
+          });
+        }
+      });
+    });
 
 module.exports = router;

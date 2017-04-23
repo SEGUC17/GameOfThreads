@@ -1,0 +1,29 @@
+<style>
+.w3-lobster {
+    font-family: "Lobster", serif;
+}
+body,h1,h5 {font-family: "Raleway", sans-serif}
+h2 {font-family: "Montserrat", sans-serif}
+body, html {height: 100%}
+.bgimg {
+    background-image: url('/images/steel-mace-workout.jpg');
+    min-height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+
+  </style>
+  <h1>Login</h1>
+
+  <p>
+  	<label> email </label>
+  	<input ng-model="customer.username"/></br>
+  	<label> password </label>
+  	<input ng-model="customer.password" type="password"/></br>
+  	<button ng-click="loginC(customer)">Login</button>
+  </p>
+
+
+<div class="w3-display-bottomleft w3-container w3-xlarge"
+  ng-controller = 'RegisterCtrl'>
+  <p> <button ng-click="registerCust()" class="w3-bar-item w3-button w3-red">Register as a customer </a>
