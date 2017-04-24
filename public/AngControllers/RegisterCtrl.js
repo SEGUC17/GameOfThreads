@@ -9,6 +9,11 @@ $scope.registerCust= function(){
 $location.url('/CustomerRegister');
 }
 
+$scope.viewClients= function(){
+$location.url('/writeReview');
+}
+
+
 
 
 

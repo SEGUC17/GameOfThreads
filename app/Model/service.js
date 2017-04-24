@@ -4,17 +4,12 @@ var mongoose = require('mongoose');
 
 
 var serviceSchema = mongoose.Schema({
-    Service_Name:{
-        type:String,
-        unique:true,
-    },
+    Service_Name:{ type:String, unique:true, },
     Service_Description:String,
     Price: Number,
-    Service_id:Number,
+    email :String
 
-    email :String,
-
-})
+});
 
 
 var Services = mongoose.model('service', serviceSchema);

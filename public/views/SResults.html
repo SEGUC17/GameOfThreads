@@ -1,0 +1,12 @@
+<div class="w3-display-bottommiddle w3-xxlarge w3-margin-top w3-text-black">
+    <h2> Search Results </h2>
+        <div ng-controller = 'SearchCtrl' ng-init= Results()>
+
+            <tr ng-repeat="x in items">
+            <h3>{{x.Business_Name | uppercase}}</h3>
+            <h3>{{x.Business_Location | uppercase}}</h3>
+            <h3>{{x.Business_website | uppercase}}</h3>
+            </tr>
+
+        </div>
+</div>

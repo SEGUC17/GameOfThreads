@@ -12,9 +12,7 @@ var userSchema = mongoose.Schema({
     //  Flag : false,
       email: String,
       password: String
-
 });
-
 // methods ======================
 // generating a hash
 userSchema.methods.generateHash = function(password) {

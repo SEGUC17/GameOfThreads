@@ -20,6 +20,10 @@ App.config(function($routeProvider) {
       templateUrl: 'public/views/CustomerRegister.html'
 
     })
+    .when('/sresults',{
+         templateUrl: 'public/Views/SResults.html',
+         controller: 'SearchCtrl'
+     })
     .when('/profile', {
       templateUrl: 'public/views/BusinessProfile.html',
      resolve: {
@@ -36,6 +40,25 @@ App.config(function($routeProvider) {
         templateUrl: 'public/views/BusinessPackages.html'
 
       })
+      .when('/delete',{
+        templateUrl: 'public/views/delete.html'
+
+      })
+      .when('/update',{
+        templateUrl: 'public/views/update.html'
+      })
+      .when('/',{ templateUrl: '/public/Views/rating.html' })
+       .when('/',{ templateUrl: '/public/Views/bookPackages.html'
+ }) .when('/',{ templateUrl: '/public/Views/booking.html' });
+
+      .when('/ServiceProviders', {
+        templateUrl: 'public/views/ServiceProviders.html',
+        controller: 'AllClientCtrl'
+       })
+       .when('/writeReview', {
+         templateUrl: 'public/views/writeReview.html'})
+         .when('/Reviews', {
+           templateUrl: 'public/views/Reviews.html'})
     .otherwise({
       redirectTo: '/'
     });

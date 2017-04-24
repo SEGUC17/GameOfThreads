@@ -111,12 +111,12 @@
   <h3>User: {{ currentUser.email }}</h3>
 
       <!-- Example row of columns -->
-        <table ng-controller = 'AddingPackagesCtrl'>
+        <div ng-controller = 'AddingPackagesCtrl'>
 
 
- <tr ng-repeat="x in Services" border = "1" >
+ <p ng-repeat="x in Services" >
 <label> Name : </label>
-    {{x.Service_Name | uppercase}} || </td>
+    <td> {{x.Service_Name | uppercase}} || </td>
 
     <label> Description : </label>
           <td> {{x.Service_Description }}|| </td>
@@ -124,12 +124,20 @@
           <label> price : </label>
           <td>{{x.Price}} </td>
 
-</tr>
-          </table>
+</p>
+          </div>
 
 
       <div ng-controller = 'AddingPackagesCtrl'>
         <p> <button ng-click="addNew()" class="w3-bar-item w3-button w3-BLACK">Add new Package</a>
-
         </div>
+
+        <div ng-controller = 'editCtrl'>
+          <p> <button ng-click="delete()" class="w3-bar-item w3-button w3-PURPLE">Delete From Your Packages</a>
+
+          </div>
+          <div ng-controller = 'editCtrl'>
+            <p> <button ng-click="update()" class="w3-bar-item w3-button w3-PINK">Updatee your things</a>
+
+            </div>
   </div>

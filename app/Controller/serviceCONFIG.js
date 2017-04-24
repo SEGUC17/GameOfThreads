@@ -7,34 +7,36 @@ let Customer = require('../Model/customer.js');
 let serviceController = {
 
     postMyService:function(req, res){
-        let service = new Service(req.body);
+      let service = new Service(req.body);
 
-        service.save(function(err, service){
-            if(err){
-                res.send(err.message)
-                console.log(err);
-            }
-            else{
-                res.redirect('/myservices');
-                console.log(service);
-                console.log("service posted");
+      service.save(function(err, service){
+          if(err){
+              res.send(err.message)
+              console.log(err);
+          }
+          else{
+              res.redirect('/BusinessPackages');
+              //res.json(service)
+              console.log(service);
 } })
     },
 
-  viewMyServices:function( req , res){
+  viewMyServices:function(req, res){
+            //  res.send(service);ySepasswordrvices:function( req , res){
 
-      Service.find( { email : req.user.local.email } , function(err, services){
+      Service.find( { email : req.user.email } , function(err, services){
 
                 if (err){
-                    res.send(err.message);
+                    res.send(err);
                   }
                     else
-                        res.render('myservices' ,{services});
+                    res.send(services); // return all nerds in JSON format
                         console.log("method viewing");
 
             })
 
     },
+
     getAllServices:function(req, res){
 
         Service.find(function(err, services){
@@ -42,16 +44,17 @@ let serviceController = {
             if(err)
                 res.send(err.message);
             else
-                res.render('myservices', {services});
+                res.send(services);
+                //res.senfile(BusinessPackages);
         })
     },
 
     DeleteService:function (req, res) {
       //var uid = req.params.service_id;
-  Service.findOneAndRemove(req.params.id , //findOneAndRemove
+  Service.findOneAndRemove({Service_Name : req.body.Service_Name } , //findOneAndRemove
 function(err ,service){
 
-  console.log(req.params.id +   "  request");
+  console.log(req.body.Service_Name +   "  request to delete");
 
     if (err){
      res.render('error')
@@ -60,20 +63,20 @@ function(err ,service){
    }
    else{
 
-        console.log("dellll");
-     res.redirect('/myservices')  }
+        console.log("delllleted");
+       res.redirect('/BusinessPackages')  }
  })
 } ,
 
 
 UpdateServices:function( req  ,  res){
-        var Newservices = req.body;
-        var service_ID = req.params.id ;
-        Service.update( service_ID , Newservices, function(err, service) {
-          console.log(req.params.id +   "  request");
+  var serviceName = req.body.oldServiceName
+        var serviceUpdate = req.body.newdata;
+        Service.update(  {Service_Name : serviceName }, serviceUpdate , function(err, service) {
+          console.log( serviceUpdate +   "  request");
 
             if (!err) {
-                res.render('index')
+              console.log("errorrrrrr");
               //  res.json("okay");
 
             } else {
@@ -81,47 +84,6 @@ UpdateServices:function( req  ,  res){
             }
         });
     }
-    // view
-    /*  Get(function(req, res) {
-            var id = req.params.user_id;
-            Value.find({'user_id':id}, function(err, value) {
-                if (!err) {
-                    res.send(value);
-                } else {
-                    res.write("fail");
-                }
-            });
-        })
-
-
-   UpdateServices:function( req  ,  res){
-var query = {services : req.service};
-req.newData = req.service;
-Service.findOneAndUpdate( query , req.newData , {upser : true} , function(err , doc){
-if (err){
-  res.render('error');
-}
-else {/*
-  Service.Service_Name = req.body.Service_Name;
-  Service.Service_Description = req.body.Service_Description;
-  Service.Price = req.body.Price;
-
-  Service.update(function(err, service){
-      if(err){
-          res.send(err.message)
-          console.log(err);
-      }
-      else
-          res.redirect('/myservices');
-          console.log(req.body);
-          console.log("service upp");
-//}
-//  });
-}
-
-});
-}
-*/
 }
 
 module.exports = serviceController;
