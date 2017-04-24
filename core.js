@@ -36,6 +36,16 @@ App.config(function($routeProvider) {
         templateUrl: 'public/views/BusinessPackages.html'
 
       })
+      .when('/',{
+    templateUrl: '/public/Views/rating.html'
+  })
+
+.when('/',{
+    templateUrl: '/public/Views/bookPackages.html'
+  })
+  .when('/',{
+    templateUrl: '/public/Views/booking.html'
+  });
     .otherwise({
       redirectTo: '/'
     });
