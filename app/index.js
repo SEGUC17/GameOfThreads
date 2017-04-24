@@ -15,7 +15,10 @@ router.get('/search',homeController.getAllClients);
 
 
 var viewServiceProviders = require('./Controller/viewServiceProviders');
-router.get('/viewAllClients', viewServiceProviders.getSP);
+router.get('/viewAllClients', viewServiceProviders.getSP, function(req, res, next)
+{
+  console.log("view clients");
+});
 
 
 // router.get('/', function(req, res) {

@@ -1,4 +1,4 @@
-let Client = require('../Model/user');
+let Client = require('../Model/user.js');
 
 let clientController = {
 	getSP: function(req, res){
