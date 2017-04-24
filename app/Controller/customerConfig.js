@@ -1,65 +1,42 @@
-var LocalStrategyC = require('passport-local').Strategy;
-var Customer = require('../Model/customer.js');
+// load all the things we need
+var LocalStrategy    = require('passport-local').Strategy;
+var FacebookStrategy = require('passport-facebook').Strategy;
+//var configAuth       = require('./oauth');
+// load up the user model
+var Customer             = require('../Model/customer');
 
+// expose this function to our app using module.exports
 module.exports = function(passportC) {
 
   passportC.serializeUser(function(customer, done) {
-    done(null, customer.id);
+    done(null, customer);
   });
 
-  passportC.deserializeUser(function(id, done) {
-    User.findById(id, function(err, customer) {
-      done(err, customer);
-    });
+  passportC.deserializeUser(function(customer, done) {
+    done(null, customer);
   });
 
-  passportC.use('local-signupC', new LocalStrategyC({
-    NameField: 'Name',
-    AddressField: 'Address',
-    phoneNumberField: 'PhoneNumber',
-    usernameField: 'email',
-    passwordField: 'password',
-    passReqToCallback: true,
-  },
-  function(req, email, password, done) {
-    process.nextTick(function() {
-      Customer.findOne({ 'local.email':  email }, function(err, customer) {
-        if (err)
-            return done(err);
-        if (customer) {
-          return done(null, false, req.flash('signupMessage', 'That email is already taken.'));
-        } else {
-          var newCustomer = new Customer();
-          newCustomer.local.Name = req.body.Name;
-          newCustomer.local.Address = req.body.Address;
-          newCustomer.local.PhoneNumber = req.body.PhoneNumber;
-          newCustomer.local.email = email;
-          newCustomer.local.password = newCustomer.generateHash(password);
-          newCustomer.save(function(err) {
-            if (err)
-              throw err;
-            return done(null, newCustomer);
-          });
-        }
-      });
-    });
-  }));
+	passportC.use('local-loginCust', new LocalStrategy(
+	  function(email, password, done) {
+	    Customer.findOne({
+	      email: email.toLowerCase()
+	    }, function(err, customer) {
+	      // if there are any errors, return the error before anything else
+           if (err)
+               return done(err);
 
-  passportC.use('local-loginC', new LocalStrategyC({
-    usernameField: 'email',
-    passwordField: 'password',
-    passReqToCallback: true,
-  },
-  function(req, email, password, done) {
-    Customer.findOne({ 'local.email':  email }, function(err, customer) {
-      if (err)
-          return done(err);
-      if (!customer)
-          return done(null, false, req.flash('loginMessage', 'No user found.'));
-      if (!customer.validPassword(password))
-          return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.'));
-      return done(null, customer);
-    });
-  }));
+           // if no user is found, return the message
+           if (!customer)
+               return done(null, false);
+
+           // if the user is found but the password is wrong
+           if (!customer.validPassword(password))
+               return done(null, false);
+
+           // all is well, return successful user
+           return done(null, customer);
+	    });
+	  }
+	));
 
 };

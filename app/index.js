@@ -34,20 +34,6 @@ router.use(express.static(__dirname+'/../'));
 
 
 
-router.get('/signup', function(req, res, next) {
-  res.render('signup', { message: req.flash('loginMessage') });
-  console.log("signup");
-});
-
-router.get('/login', function(req, res, next) {
-  res.render('login' , { message: req.flash('loginMessage') });
-  console.log("login");
-});
-router.get('/profile' , function(req, res, next) {
-  res.render('profile' , { user: req.user });
-  console.log("view profile");
-});
-
 // show the login form
 router.get('/Flogin', function(req, res) {
 
@@ -74,20 +60,6 @@ router.post('/Fsignup', passport.authenticate('local-signup', {
   failureFlash : true // allow flash messages
 }));
 
-// PROFILE SECTION =========================
-// =====================================
-// we will want this protected so you have to be logged in to visit
-// we will use route middleware to verify this (the isLoggedIn function)
-router.get('/Fprofile', isLoggedIn, function(req, res) {
-  res.render('Fprofile.ejs', {
-    user : req.user // get the user out of session and pass to template
-  });
-});
-
-// =====================================
-// FACEBOOK ROUTES =====================
-// =====================================
-// route for facebook authentication and login
 
 
 
@@ -137,34 +109,6 @@ router.post('/update' , servicesConfig.UpdateServices, function(req, res, next)
   console.log("update index");
 });
 
-router.get('/signupCust', function(req, res, next) {
-
-  if (err) {
-            res.send(err);
-        }
-
-        res.json({message:"Error"});
-  });
-
-router.get('/loginCust', function(req, res, next) {
-
-  //res.json(customer);
-  // res.sendFile('usersignin.html' , { message: req.flash('loginMessage') });
-  console.log("login customer");
-
-  if (err) {
-            res.send(err);
-        }
-
-        res.json({message:"confirmation"});
-});
-
-router.get('/profileCust', function(req, res, next) {
-
-  //res.render('profileCust' , { user: req.user });
-  res.json({ user: req.user });
-  console.log("view profile of customer");
-});
 
 
 router.post('/reviews' , reviewsConfig.writeReview , function(req, res, next)
@@ -194,40 +138,12 @@ router.get('/verify/:id' , Request.verifyRequest, function(req, res, next)
 });
 
 
-router.post('/signupCust', passportC.authenticate('local-signupC', {
-  successRedirect: '/profileCust',
-  failureRedirect: '/signupCust',
-  failureFlash: true,
-}));
-router.post('/loginCust', passportC.authenticate('local-loginC', {
+// handle logout as Business
+router.post("/logout", function(req, res) {
+  req.logOut();
+  res.send(200);
+})
 
-  successRedirect: '/profileCust',
-  failureRedirect: '/loginCust',
-  failureFlash: true,
-}));
-
-
-router.post('/signup', passport.authenticate('local-signup', {
-  successRedirect: '/',
-  failureRedirect: '/signup',
-  failureFlash: true,
-}));
-
-
-router.post('/login', passport.authenticate('local-login', {
-
-  successRedirect: '/profile',
-  failureRedirect: '/login',
-  failureFlash: true,
-}));
-
-
-
-function isLoggedIn(req, res, next) {
-  if (req.isAuthenticated())
-      return next();
-  res.redirect('/');
-}
 
 
 module.exports = router;
