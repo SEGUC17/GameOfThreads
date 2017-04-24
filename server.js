@@ -24,11 +24,6 @@ var path = require('path');
 var favicon = require('serve-favicon');
 app.use(flash());
 
-var server = require ('http').createServer(app);
-var io = require ('socket.io').listen (server);
-users = [];
-connections = [];
-
 
 //Body-parser
 var bodyParser = require('body-parser');
@@ -36,6 +31,13 @@ app.use(bodyParser.json()); //for parsing application/json
 app.use(bodyParser.urlencoded({
   extended: true
 }));
+/*
+var server = require ('http').createServer(app);
+var io = require ('socket.io').listen (server);
+users = [];
+connections = [];
+
+
 var app = express(),handlebars;
 var hbs = require("hbs");
  exphbr   = require('express3-handlebars'),
@@ -73,9 +75,9 @@ app.get('/paySuccess', function(req,res){
 	res.redirect('/paysuccess');
 });
 //Load .env file
-
+*/
 // routes ======================================================================
 require('./app/routes.js')(app, passport , passportC); // load our routes and pass in our app and fully configured passport
 
 
-app.listen(9090);
+app.listen(9999);
