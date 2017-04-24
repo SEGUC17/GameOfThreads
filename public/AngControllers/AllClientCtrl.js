@@ -8,7 +8,11 @@ App.controller('AllClientCtrl', function($scope, $location, AllClientService){
 
   AllClientService.getAllClients().then(function(response){
   	console.log('entered allclient ctrl');
+
 console.log(response.data);
+
+	$scope.myClients=response.data
+
   $location.url('/ServiceProviders');
 
   });

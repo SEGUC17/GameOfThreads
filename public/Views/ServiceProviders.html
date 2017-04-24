@@ -5,9 +5,9 @@
 
 <h2> Service Providers </h2>
 
-<div class = "row movies-list" ng-controller = 'AllClientCtrl'>
+<div class = "row movies-list" ng-controller = 'AllClientCtrl' ng-init = viewClients()>
 
-<tr data-ng-repeat= "x in users">
+<tr data-ng-repeat= "x in myClients">
 
 <h1> {{x.Business_name}}</h1>
 

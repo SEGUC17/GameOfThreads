@@ -1,13 +1,17 @@
-let Client = require('../Model/user.js');
+
+
+var Client = require('mongoose').model('User');
 
 let clientController = {
 	getSP: function(req, res){
-		Client.find(function(err, clients){
+		Client.find({}).exec(function(err, clients){
 			if(err)
-				re.send(err.message);
-			else
-				res.json(clients);
-		})
+				res.send(err.message);
+			else{
+				console.log(clients)
+				res.send(clients);
+		}
+	})
 	}
 
 

@@ -1,3 +1,5 @@
+
+
 App.factory('AllClientService', function($http){
 	return {
 		getAllClients : function(){
