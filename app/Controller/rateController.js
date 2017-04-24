@@ -12,7 +12,7 @@ let rateController = {
             }
             else{
 
-                console.log(rate);
+                console.log(rating);
 
             }
         })
