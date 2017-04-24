@@ -5,6 +5,11 @@ App.config(function($routeProvider) {
     .when('/', {
       templateUrl: 'public/views/Homepage.html'
     })
+.when('/sresults',{
+         templateUrl: 'public/Views/SResults.html',
+         controller: 'SearchCtrl'
+     })
+
     .when('/BusinessLogin', {
       templateUrl: 'public/views/BusinessLogin.html',
       controller: 'LoginCtrl'
