@@ -1,0 +1,57 @@
+
+ <body>
+   <nav class="navbar navbar-default">
+       <div class="container-fluid">
+           <div class="navbar-header">
+           </div>
+       </div>
+   </nav>
+
+   <div class="col-xs-12 col-md-4">
+       <div class="form-container">
+           <h3 style="margin-bottom:40px;">Add New Services or Packages </h3>
+           <form class="form" method="POST" action="/service">
+
+
+               <div class="form-group">
+                   <label for="InputTitle">Service Name</label>
+                   <input  ng-model = "Service_Name"
+                      ng-change = "setServiceName(Service_Name)"
+                       name = "Service_Name" type="text" class="form-control" id="InputTitle"
+                   placeholder="Title">
+               </div>
+
+               <div class="form-group">
+                   <label for="InputTitle">Service Description</label>
+                   <input ng-model = "Service_Description"
+                      ng-change = "setServiceDescription(Service_Description)"
+                      name = "Service_Description" type="text" class="form-control" id="InputTitle"
+                   placeholder="Description">
+               </div>
+
+               <div class="form-group">
+                   <label for="InputTitle">Service Price</label>
+                   <input  ng-model = "Price"
+                      ng-change = "setPrice(Price)"name = "Price" type="Number" class="form-control" id="InputTitle"
+                   placeholder="price in LE">
+               </div>
+
+               <div class="form-group">
+                   <label for="InputTitle"> email </label>
+                   <input  ng-model = "email"
+                      ng-change = "setemail(email)"name = "email" class="form-control" id="InputTitle"
+                   placeholder="email">
+               </div>
+
+
+               <div  ng-controller = 'AddingPackagesCtrl'>
+                 <p> <button ng-click="adding()" class="w3-bar-item w3-button w3-BLACK">Add this!</a>
+
+                 </div>
+
+
+
+</div>
+
+</div>
+</div>
