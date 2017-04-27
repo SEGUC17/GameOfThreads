@@ -83,31 +83,30 @@ button {
     }
 }
 </style>
-<body>
+<div class="w3-display-bottomleft w3-container w3-large w3-text-black" ng-controller = "RegisterCtrl">
 
 <h2>Signup Form Customer </h2>
 
 <form class="form" >
   <div class="container">
 
-    <label>Name</label>
+    <label>Name</label></br>
     <input ng-model="customer.Name"/></br>
 
-    <label>Address</label>
+    <label>Address</label></br>
     <input ng-model="customer.Address"/></br>
 
-    <label>PhoneNumber</label>
+    <label>PhoneNumber</label></br>
     <input ng-model="customer.PhoneNumber"/></br>
-    <label>email</label>
+    <label>email</label></br>
 
        <input ng-model="customer.email"/></br>
-       <label>Password</label>
+       <label>Password</label></br>
        <input ng-model="customer.password" type="password" /></br>
 
-       <label>Re-enter your Passowrd</label>
+       <label>Re-enter your Passowrd</label></br>
      	<input ng-model="customer.password2" type="password" /></br>
 
-    <br>
     <div ng-controller = "SignUpCtrlCust">
     <button ng-click="signupC(customer)">Sign Up</button>
 </div>

@@ -27,6 +27,12 @@ App.config(function($routeProvider) {
     .when('/profileCust', {
       templateUrl: 'public/views/CustomerProfile.html'
     })
+    .when('/AllServices', {
+      templateUrl: 'public/views/AllServices.html'
+    })
+    .when('/choose', {
+      templateUrl: 'public/views/choosePackage.html'
+    })
     .when('/AddPackage',{
       templateUrl: 'public/views/AddPackage.html'
     })
@@ -39,10 +45,9 @@ App.config(function($routeProvider) {
       .when('/update',{
         templateUrl: 'public/views/update.html'
       })
-
       .when('/sresults',{
            templateUrl: 'public/views/SResults.html',
-           controller: 'SearchCtrl'
+           controller: 'SidebarCtrl'
        })
       .when('/RatingCtrl',
        { templateUrl: '/public/views/rating.html'
@@ -55,12 +60,23 @@ App.config(function($routeProvider) {
 
       .when('/ServiceProviders', {
         templateUrl: 'public/views/ServiceProviders.html',
-        controller: 'AllClientCtrl'   })
-
+        controller: 'AllClientCtrl'
+      })
        .when('/writeReview', {
-         templateUrl: 'public/views/writeReview.html'})
-
-         .when('/Reviews', { templateUrl: 'public/views/Reviews.html'})
+         templateUrl: 'public/views/writeReview.html'
+       })
+         .when('/Reviews',
+          { templateUrl: 'public/views/Reviews.html'
+        })
+         .when('/ViewReq', {
+          templateUrl: 'public/views/Requests.html'
+          })
+         .when('/logout', {
+       templateUrl: 'public/views/Customerlogin.html'
+     })
+     .when('/payment', {
+   templateUrl: 'public/views/payment.html'
+  })
     .otherwise({
       redirectTo: '/'
     });
