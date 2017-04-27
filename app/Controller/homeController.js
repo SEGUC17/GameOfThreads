@@ -38,7 +38,7 @@ let homeController = {
                   console.log("error fel method");
                 }
                 else {
-                  console.log("Search Result: " + clients)
+                  console.log(clients);
                   res.json(clients);
                 }
             });
@@ -49,3 +49,4 @@ let homeController = {
 }
 
 module.exports = homeController;
+
