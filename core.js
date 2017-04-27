@@ -23,14 +23,12 @@ App.config(function($routeProvider) {
     })
     .when('/CustomerRegister', {
       templateUrl: 'public/views/CustomerRegister.html'
-
     })
     .when('/profile', {
       templateUrl: 'public/views/BusinessProfile.html',
      resolve: {
         logincheck: checkLoggedin
-      }
-    })
+      }})
     .when('/profileCust', {
       templateUrl: 'public/views/CustomerProfile.html'
     })
@@ -39,8 +37,35 @@ App.config(function($routeProvider) {
     })
       .when('/BusinessPackages',{
         templateUrl: 'public/views/BusinessPackages.html'
-
       })
+      .when('/delete',{
+        templateUrl: 'public/views/delete.html'
+      })
+      .when('/update',{
+        templateUrl: 'public/views/update.html'
+      })
+
+      .when('/sresults',{
+           templateUrl: 'public/views/SResults.html',
+           controller: 'SearchCtrl'
+       })
+      .when('/RatingCtrl',
+       { templateUrl: '/public/views/rating.html'
+      })
+       .when('/bookPackagedCtrl',
+       { templateUrl: '/public/views/bookPackages.html'
+      })
+       .when('/booking',
+        { templateUrl: '/public/views/booking.html' })
+
+      .when('/ServiceProviders', {
+        templateUrl: 'public/views/ServiceProviders.html',
+        controller: 'AllClientCtrl'   })
+
+       .when('/writeReview', {
+         templateUrl: 'public/views/writeReview.html'})
+
+         .when('/Reviews', { templateUrl: 'public/views/Reviews.html'})
     .otherwise({
       redirectTo: '/'
     });

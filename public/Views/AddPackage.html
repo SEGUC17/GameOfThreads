@@ -18,7 +18,7 @@
                    <input  ng-model = "Service_Name"
                       ng-change = "setServiceName(Service_Name)"
                        name = "Service_Name" type="text" class="form-control" id="InputTitle"
-                   placeholder="Title">
+                   placeholder="Title" required>
                </div>
 
                <div class="form-group">
@@ -26,21 +26,21 @@
                    <input ng-model = "Service_Description"
                       ng-change = "setServiceDescription(Service_Description)"
                       name = "Service_Description" type="text" class="form-control" id="InputTitle"
-                   placeholder="Description">
+                   placeholder="Description" required>
                </div>
 
                <div class="form-group">
                    <label for="InputTitle">Service Price</label>
                    <input  ng-model = "Price"
                       ng-change = "setPrice(Price)"name = "Price" type="Number" class="form-control" id="InputTitle"
-                   placeholder="price in LE">
+                   placeholder="price in LE" required>
                </div>
 
                <div class="form-group">
                    <label for="InputTitle"> email </label>
                    <input  ng-model = "email"
                       ng-change = "setemail(email)"name = "email" class="form-control" id="InputTitle"
-                   placeholder="email">
+                   placeholder="your email " required>
                </div>
 
 

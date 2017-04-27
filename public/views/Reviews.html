@@ -106,38 +106,20 @@
 </html>
 
 
-  <h2>Your Available Packages</h2>
+  <h2> The Reviews Written about the platform</h2>
 
-  <h3>User: {{ currentUser.email }}</h3>
 
       <!-- Example row of columns -->
-        <div ng-controller = 'AddingPackagesCtrl'>
+        <div ng-controller = 'reviewCtrl'>
 
+ <p ng-repeat="x in AllReviews" >
+<label> About the Business: </label>
+    <td> {{x.Business_Name | uppercase}} || </td>
 
- <p ng-repeat="x in Services" >
-<label> Name : </label>
-    <td> {{x.Service_Name | uppercase}} || </td>
-
-    <label> Description : </label>
-          <td> {{x.Service_Description }}|| </td>
-
-          <label> price : </label>
-          <td>{{x.Price}} </td>
+    <label> The Review is : </label>
+          <td> {{x.Review }}|| </td>
 
 </p>
           </div>
 
-
-      <div ng-controller = 'AddingPackagesCtrl'>
-        <p> <button ng-click="addNew()" class="w3-bar-item w3-button w3-BLACK">Add new Package</a>
-        </div>
-
-        <div ng-controller = 'editCtrl'>
-          <p> <button ng-click="delete()" class="w3-bar-item w3-button w3-PURPLE">Delete From Your Packages</a>
-
-          </div>
-          <div ng-controller = 'editCtrl'>
-            <p> <button ng-click="update()" class="w3-bar-item w3-button w3-PINK">Updatee your things</a>
-
-            </div>
   </div>

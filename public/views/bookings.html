@@ -1,0 +1,19 @@
+<table class="table table-condensed">
+    <thead>
+        <tr>
+            <th>packageID</th>
+          
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr data-ng-repeat="book in bookings">
+            <td>{{book.packageID}}</td>
+          
+            <td>{{book.date}}</td>
+        </tr>
+        <tr data-ng-show="bookings.length <= 0">
+            <td colspan="2" style="text-align:center;">You have not made any  Bookings yet.</td>
+        </tr>
+    </tbody>
+</table>

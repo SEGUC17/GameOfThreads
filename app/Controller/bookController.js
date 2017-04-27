@@ -16,6 +16,17 @@ let bookController = {
 
             }
         })
+        getAllbookings:function(req, res){
+
+        booking.find(function(err, bookings){
+
+            if(err)
+                res.send(err.message);
+            else
+                console.log(bookings);
+
+        })
+    },
     }
 }
 

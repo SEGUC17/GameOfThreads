@@ -1,0 +1,14 @@
+<div class="w3-display-bottommiddle w3-xxlarge w3-margin-top w3-text-black">
+<h2> Your Current Requests </h2>
+    <!-- Example row of columns -->
+    <div class="row movies-list" ng-controller = 'RequestCtrl'>
+      <tr data-ng-repeat="x in users">
+          <h1> {{x.Business_Name}} </h1>
+
+            <h2>  {{x.Business_Location}}</h2>
+            <h3>  {{x.Business_website}} </h3>
+</tr>
+        </div>
+    </div>
+</div>
+<head>
