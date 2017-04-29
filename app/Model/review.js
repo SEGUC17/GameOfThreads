@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 var reviewSchema = mongoose.Schema({
-    Buissnes_Name:String,
+    Business_Name:String,
     Review:String,
 })
 

@@ -1,0 +1,11 @@
+<h1> Enter the the Name of the Service You want to choose </h1>
+
+<div class="form-group" ng-controller = 'StripeCtrl'>
+    <label for="InputTitle">Service Name</label>
+    <input  ng-model = "Service"
+       ng-change = "setServicename(Service)"
+        name = "Service_Name" type="text" class="form-control" id="InputTitle"
+    placeholder="Title" required>
+
+  <p> <button ng-click="buy()" class="w3-bar-item w3-button w3-BLACK">Buy this!</a>
+</div>

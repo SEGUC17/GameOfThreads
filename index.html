@@ -4,15 +4,17 @@
     <script src="../js/angular.min.js"></script>
     <script src="../js/angular-route.js"></script>
     <script src="../core.js"></script>
-    <!-- //controllers -->
+    <!-- controllers
     <script src= "../public/AngControllers/bookingPackageCtrl.js"></script>
-    <script src= "../public/AngControllers/sidebarCtrl.js"></script>
     <script src= "../public/AngControllers/stripe.js"></script>
+
     <script src= "../public/AngControllers/ratingCtrl.js"></script>
+    -->
+    <script src= "../public/AngControllers/StripeCtrl.js"></script>
+    <script src= "../public/AngControllers/SidebarCtrl.js"></script>
     <script src= "../public/AngControllers/RequestCtrl.js"></script>
-
-
     <script src= "../public/AngControllers/HomeCtrl.js"></script>
+    <script src= "../public/AngControllers/BuyCtrl.js"></script>
      <script src= "../public/AngControllers/UserCtrl.js"></script>
      <script src= "../public/AngControllers/CustomerCtrl.js"></script>
      <script src= "../public/AngControllers/RegisterCtrl.js"></script>
@@ -22,11 +24,13 @@
      <script src= "../public/AngControllers/AddingPackagesCtrl.js"></script>
      <script src= "../public/AngControllers/AllClientCtrl.js"></script>
      <script src= "../public/AngControllers/reviewCtrl.js"></script>
+     <script src= "../public/AngControllers/chatCtrl.js"></script>
 
 <!--services -->
 <script src= "../public/service/SearchService.js"></script>
 <script src= "../public/service/bookingsService.js"></script>
 <script src= "../public/service/ratingService.js"></script>
+<script src= "../public/service/requestService.js"></script>
 
 
     <script src= "../public/service/PackageService.js"></script>
@@ -45,12 +49,10 @@
   </head>
   <body>
 
+<div class="bgimg w3-display-container w3-text-black "  ng-controller = "SidebarCtrl" >
 
+<div class="w3-sidebar w3-bar-block w3-card-2 w3-animate-left" style="display:none" id="mySidebar" >
 
-
-<div class="bgimg w3-display-container w3-text-black ">
-
-<div class="w3-sidebar w3-bar-block w3-card-2 w3-animate-left" style="display:none" id="mySidebar">
 <button class="w3-bar-item w3-button w3-large"onclick="w3_close()">Close &times;</button>
 <input type="text" placeholder= "Search..." ng-model="searchBox" ng-change = setSearchItem(searchBox) style="width: 110px;">
 
@@ -58,13 +60,8 @@
 <a href="/" class="w3-bar-item w3-button">Mainpage</a>
 <a ng-click="Chat()" class="w3-bar-item w3-button">Contact Us</a>
 <a ng-click="ViewReq()"  class="w3-bar-item w3-button">Admin</a>
-
-
-
-
 </div>
 <div zclass="w3-main" id="main">
-
 <button class="w3-button  w3-xlarge" onclick="w3_open()">&#9776;</button>
 </div>
 </div>
@@ -74,7 +71,6 @@ function w3_open() {
   document.getElementById("main").style.marginLeft = "15%";
   document.getElementById("mySidebar").style.width = "15%";
   document.getElementById("mySidebar").style.display = "block";
-  document.getElementById("openNav").style.display = 'none';
 }
 function w3_close() {
   document.getElementById("main").style.marginLeft = "0%";
@@ -83,15 +79,6 @@ function w3_close() {
 }
 </script>
 
-
-
-
   <div ng-view></div>
-
-
-
-
-
-
   </body>
   </html>

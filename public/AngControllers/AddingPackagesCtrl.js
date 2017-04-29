@@ -59,4 +59,27 @@ $scope.view= function(){
 
   });
 };
+
+$scope.viewAll= function(){
+//$scope.service = PackageService.query();
+
+  PackageService.getAllServices().then(function(response){
+  PackageService.setMyServices(response.data);
+  console.log(response.data);
+  $location.url('/AllServices');
+
+  });
+
+};
+
+$scope.buy= function(){
+//$scope.service = PackageService.query();
+
+  PackageService.getAllServices().then(function(response){
+  //PackageService.setMyServices(response.data);
+  console.log(response.data);
+  $location.url('/AllServices');
+
+  });
+};
 });

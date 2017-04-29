@@ -1,14 +1,12 @@
-App.controller('SidebarCtrl',function($scope,$location , SearchService){
-
+App.controller('SidebarCtrl',function($scope,$location , requestService , SearchService)
+{
 
 $scope.ViewReq=function(){
     $location.url('/ViewReq');
   };
   $scope.Chat=function(){
-    $location.url('/Chat');
+    $location.url('/chat');
   };
-
-
 
     $scope.Results= function(){
     var searchitem = SearchService.getSearchItem();
@@ -40,4 +38,5 @@ $scope.ViewReq=function(){
         console.log('entered go');
         $location.url('/sresults');
     };
+
 });
