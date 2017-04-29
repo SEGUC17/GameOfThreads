@@ -7,7 +7,6 @@ App.factory('reviewService',  function($http) {
       writeReview : function(review) {
           return $http.post('/reviews' , review);
       },
-
         setBusinessName : function(value){
           this.BusinessName = value;
         },

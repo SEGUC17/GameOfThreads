@@ -1,0 +1,26 @@
+
+<h1> The Available Services Are: </h1>
+
+<h3>Welcome {{ currentCust.Name }}</h3>
+
+    <!-- Example row of columns -->
+      <div ng-controller = 'AddingPackagesCtrl'>
+
+
+<p ng-repeat="x in Services" >
+<label> Name : </label>
+  <td> {{x.Service_Name | uppercase}} || </td>
+
+  <label> Description : </label>
+        <td> {{x.Service_Description }}|| </td>
+
+        <label> price : </label>
+        <td>{{x.Price}} </td>
+
+</p>
+        </div>
+
+        <div ng-controller = 'BuyCtrl'>
+          <p> <button ng-click="choose()" class="w3-bar-item w3-button w3-PURPLE">Buy now !</a>
+
+          </div>

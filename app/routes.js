@@ -5,10 +5,17 @@ var reviewsConfig = require('./Controller/reviewsConfig.js');
 var Request = require('./Controller/Requests.js');
 var homeController= require('./Controller/homeController');
 var viewServiceProviders = require('./Controller/viewServiceProviders');
-
-
-
 module.exports = function(app, passport , passportC) {
+
+//chat
+app.get('/chat', function (req,res){
+  res.sendFile('chat.html');
+});
+  
+/*  //stripe payment
+  app.get('/pay',function(req,res){
+    res.render('payment',{});
+});*/
 
 
     app.use(function(req , res , next){
@@ -17,9 +24,9 @@ module.exports = function(app, passport , passportC) {
       next();
     });
   app.use(express.static(__dirname + '/../'));
-
+//the homepage
   app.get('/', function(req, res) {
-    res.sendFile( 'index.html'); // load the single view file (angular will handle the page changes on the front-end)
+    res.sendFile( 'index.html');
     console.log("START");
   });
   // process the login form as Business
@@ -107,26 +114,28 @@ module.exports = function(app, passport , passportC) {
           }
         });
     });
-  
 
+//show all the bhusiness requests to join the platform
   app.get('/requests', Request.getAllRequests , function(req, res, next) {
   res.render('Requested');
   console.log("view The requests");
   });
-
+//verify anyy of the requests
   app.get('/verify/:id' , Request.verifyRequest, function(req, res, next)
   {
   console.log("verifiedd");
   });
-
+//search bar in the homepage
   app.get('/search',homeController.getAllClients);
-
+//view all the clients in the platform for each customer account
   app.get('/viewAllClients', viewServiceProviders.getSP, function(req, res, next)
   {// res.json({ user: req.user});
     console.log("view clients");
   });
+
+  //faceboo authentication
   app.route('/auth/facebook').get(passport.authenticate('facebook', { scope: ['email']}));
-  // router.get('/auth/facebook', passport.authenticate('facebook'));
+  // app.get('/auth/facebook', passport.authenticate('facebook'));
   // handle the callback after facebook has authenticated the user
   app.get('/auth/facebook/callback',passport.authenticate('facebook',
   {successRedirect : '/profile',
@@ -136,15 +145,17 @@ module.exports = function(app, passport , passportC) {
 //adding new service or packages of Business-provider
     app.post('/service' , servicesConfig.postMyService);
 
-
-
 //fetching and showing all of the services of all business provider
-/*    app.get('/BusinessPackages' ,  servicesConfig.getAllServices, function(req, res, next) {
+ app.get('/Packages' ,  servicesConfig.getAllServices, function(req, res, next) {
       console.log("routes method"); //, servicesConfig.viewMyServices
-    });*/
+    });
 //viewing the only my services as business
     app.get('/BusinessPackages' ,  servicesConfig.viewMyServices, function(req, res, next) {
       console.log("routes method"); //, servicesConfig.viewMyServices
+    });
+    //view certain services to buy
+    app.post('/buy' ,  servicesConfig.chooseService, function(req, res, next) {
+      console.log("routes method for certain service ");
     });
     //deleting one of my services as business provider
     app.post('/delete' , servicesConfig.DeleteService, function(req, res, next)
@@ -156,12 +167,15 @@ module.exports = function(app, passport , passportC) {
     {
       console.log("update index");
     });
+    //write review about a certain provider
     app.post('/reviews' , reviewsConfig.writeReview , function(req, res, next)
     {
       console.log(" revieww addedd");
     });
+    //view any of the written reviews
     app.get('/allReviews', reviewsConfig.viewAllReviews , function(req, res, next) {
     //  res.render('allReviews');
-      console.log("view The reviewss men index");
+      console.log("view The reviewss");
     });
+
 };

@@ -5,9 +5,12 @@ App.controller('HomeCtrl' ,function($scope , $location){
     $location.url('/BusinessLogin')
 
   }
-  //login as Customer of the page 
+  //login as Customer of the page
   $scope.Customerlogin = function(){
     $location.url('/Customerlogin')
 
   }
+
+
+
 })

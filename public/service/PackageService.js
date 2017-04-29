@@ -5,6 +5,9 @@ App.factory('PackageService',  function($http) {
       viewMyServices : function() {
           return $http.get('/BusinessPackages');
       },
+      getAllServices : function() {
+          return $http.get('/Packages');
+      },
       getMyServices : function() {
           return this.services;
       },
