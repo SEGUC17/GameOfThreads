@@ -1,13 +1,14 @@
 <h2> Service Providers </h2>
 
 <div class = "row movies-list" ng-controller = 'AllClientCtrl' ng-init = viewClients()>
-
+<h3> HERE IS THE AVAILABLE PROVIDERS ON OUR PLATFORM :<h3>
 <p ng-repeat= "x in myClients">
 
-{{x.Business_name}}
-
-{{x.Business_location}}
-
+ <label> THE BUSINESS: </label>
+  {{x.Business_Name}}
+<label>-- IS  AVIALABLE AT :  </label>
+{{x.Business_Location}}
+<label> -- AND THERE WEBSITE IS  : </label>
 {{x.Business_website}}
 
 </p>

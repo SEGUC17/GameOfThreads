@@ -32,11 +32,8 @@ let serviceController = {
                     else
                     res.send(services); // return all nerds in JSON format
                         console.log("method viewing");
-
             })
-
-    },
-
+},
     getAllServices:function(req, res){
 
         Service.find(function(err, services){
@@ -72,18 +69,18 @@ function(err ,service){
 UpdateServices:function( req  ,  res){
   var serviceName = req.body.oldServiceName
         var serviceUpdate = req.body.newdata;
-        Service.update(  {Service_Name : serviceName }, serviceUpdate , function(err, service) {
+        Service.update(  {Service_Name : serviceName }, serviceUpdate ,
+          function(err, service) {
           console.log( serviceUpdate +   "  request");
 
             if (!err) {
-              console.log("errorrrrrr");
+              console.log("updated");
               //  res.json("okay");
 
             } else {
-                res.write("fail");
+                res.write("update fail");
             }
         });
-    }
-}
+      }}
 
 module.exports = serviceController;

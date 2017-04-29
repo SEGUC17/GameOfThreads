@@ -2,12 +2,12 @@
 <h2> Your Current Requests </h2>
     <!-- Example row of columns -->
     <div class="row movies-list" ng-controller = 'RequestCtrl'>
-      <tr data-ng-repeat="x in users">
-          <h1> {{x.Business_Name}} </h1>
+      <p data-ng-repeat="x in users">
+          {{x.Business_Name}}
 
-            <h2>  {{x.Business_Location}}</h2>
-            <h3>  {{x.Business_website}} </h3>
-</tr>
+           {{x.Business_Location}}
+           {{x.Business_website}}
+</p>
         </div>
     </div>
 </div>

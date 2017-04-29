@@ -9,44 +9,41 @@ let homeController = {
         if(req.query.search){
 
             //Client.find({Buisness_name: new RegExp('^'+req.query.search+'$', "i")}, function(err, searchresults) {
-          Client.findOne({ 'local.Buisness_name':  req.query.search }, function(err, searchresults) {
-                   if(err)
-
+          Client.findOne({ 'Business_Name':  req.query.search }, function(err, searchresults) {
+            if(err)
                     res.send(err.message);
-
-                else{
+            else{
                 if(searchresults == null){
                   console.log("No Results");
-           res.json("There are no results matching your search. Please try again.");
-}
-                  else
+                  res.json("There are no results matching your search. Please try again.");
+                }
+                else{
                   console.log("Search Result: " + searchresults);
-            res.json(searchresults);
+                  res.json(searchresults);
+                }
                 //    res.render('search.ejs', {searchresults, pagetitle: "Home", user : req.user, search: req.query.search});
-}
-            });
-
-        } else{
-
-            console.log("no search");
-
-             Client.find(function(err, clients) {
-
-                   if(err)
-
-                    res.send(err.message);
-
-                else
-             res.json(clients);
-
-                   //res.render('search.ejs', {clients, pagetitle: "Home", user : req.user});
+            }
 
             });
-
         }
 
-    }
+        else{
+            console.log("no search");
+            Client.find({}).exec(function(err , clients){
+                if(err){
+                  console.log("error fel method");
+                }
+                else {
+                  console.log(clients);
+                  res.json(clients);
+                }
+            });
+        }
+
+  }
 
 }
+
+
 
 module.exports = homeController;
