@@ -45,6 +45,18 @@ let serviceController = {
                 //res.senfile(BusinessPackages);
         })
     },
+    chooseService:function(req, res){
+      Service.findOne({Service_Name : req.body.Service_Name } , function(err, service){
+
+        console.log(req.body.Service_Name +   "  request certain service ");
+
+            if(err)
+                res.send(err.message);
+            else
+                res.send(service);
+                //res.senfile(BusinessPackages);
+        });
+    },
 
     DeleteService:function (req, res) {
       //var uid = req.params.service_id;

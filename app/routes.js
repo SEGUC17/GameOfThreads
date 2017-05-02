@@ -5,8 +5,17 @@ var reviewsConfig = require('./Controller/reviewsConfig.js');
 var Request = require('./Controller/Requests.js');
 var homeController= require('./Controller/homeController');
 var viewServiceProviders = require('./Controller/viewServiceProviders');
-
 module.exports = function(app, passport , passportC) {
+
+//chat
+app.get('/chat', function (req,res){
+  res.sendFile('chat.html');
+});
+  
+/*  //stripe payment
+  app.get('/pay',function(req,res){
+    res.render('payment',{});
+});*/
 
 
     app.use(function(req , res , next){
@@ -144,6 +153,10 @@ module.exports = function(app, passport , passportC) {
     app.get('/BusinessPackages' ,  servicesConfig.viewMyServices, function(req, res, next) {
       console.log("routes method"); //, servicesConfig.viewMyServices
     });
+    //view certain services to buy
+    app.post('/buy' ,  servicesConfig.chooseService, function(req, res, next) {
+      console.log("routes method for certain service ");
+    });
     //deleting one of my services as business provider
     app.post('/delete' , servicesConfig.DeleteService, function(req, res, next)
     {
@@ -164,23 +177,5 @@ module.exports = function(app, passport , passportC) {
     //  res.render('allReviews');
       console.log("view The reviewss");
     });
-    //stripe payment
-    app.get('/paySuccess', function(req,res){
-    		res.render('paysuccess');
-    });
-    app.post('/charge',function(req,res){
-    	var token = req.body.stripeToken;
-    	var chargeAmount = req.body.chargeAmount;
-    	var charge = stripe.charges.create({
-    		amount:chargeAmount,
-    		currency:"gbp",
-    		source:token,
-    	},function(err,charge){
-    		if(err ==="StripeCardError"){
-    			console.log("Card Declined");
-    		}
-    	});
-    	console.log("success")
-    	res.redirect('/paysuccess');
-    });
+
 };

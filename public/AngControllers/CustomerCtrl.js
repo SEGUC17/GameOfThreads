@@ -5,7 +5,7 @@ App.controller("NavCtrlCust", function($rootScope, $scope, $http, $location) {
         $rootScope.currentCust = null;
         $location.url("/");
       });  }
-});
+    });
 App.controller("SignUpCtrlCust", function($scope, $http, $rootScope, $location) {
   $scope.signupC = function(customer) {
 

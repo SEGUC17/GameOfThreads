@@ -1,11 +1,30 @@
 <h1> Enter the the Name of the Service You want to choose </h1>
 
-<div class="form-group" ng-controller = 'StripeCtrl'>
+<div class="form-group" ng-controller = 'BuyCtrl'>
     <label for="InputTitle">Service Name</label>
     <input  ng-model = "Service"
        ng-change = "setServicename(Service)"
         name = "Service_Name" type="text" class="form-control" id="InputTitle"
     placeholder="Title">
 
-  <p> <button ng-click="buy()" class="w3-bar-item w3-button w3-BLACK">Buy this!</a>
+  <p> <button ng-click="buy()" class="w3-bar-item w3-button w3-BLACK">Check this!</a>
+</div>
+<div>
+<form action ="/charge" method="post">
+<script
+	src="https://checkout.stripe.com/checkout.js"
+	class="stripe-button"
+	data-key="pk_test_gjpuC15pXA1rt5N6N7bfk8bU"
+	data-amount="3000"
+	data-name ="cute"
+	data-description="th"
+	data-locale="auto"
+	data-currency="gbp"
+	>
+</script>
+<input type="hidden" name="chargeAmount" value="10000">
+</form>
+</div>
+    <div ng-controller = 'StripeCtrl'>
+<p> <button ng-click="buynow()" class="w3-bar-item w3-button w3-BLACK">Buy now!</a>
 </div>

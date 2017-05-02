@@ -4,12 +4,19 @@
     <script src="../js/angular.min.js"></script>
     <script src="../js/angular-route.js"></script>
     <script src="../core.js"></script>
+  <!--  <script src="https://checkout.stripe.com/checkout.js"></script>
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+-->
+
     <!-- controllers
     <script src= "../public/AngControllers/bookingPackageCtrl.js"></script>
     <script src= "../public/AngControllers/stripe.js"></script>
 
     <script src= "../public/AngControllers/ratingCtrl.js"></script>
+
+    <script src= "../public/AngControllers/index.js"></script>
     -->
+    <script src= "../public/AngControllers/chatCtrl.js"></script>
     <script src= "../public/AngControllers/StripeCtrl.js"></script>
     <script src= "../public/AngControllers/SidebarCtrl.js"></script>
     <script src= "../public/AngControllers/RequestCtrl.js"></script>
@@ -26,7 +33,10 @@
      <script src= "../public/AngControllers/reviewCtrl.js"></script>
 
 <!--services -->
-<script src= "../public/service/SearchService.js"></script>
+<script src= "../public/service/buyService.js"></script>
+
+
+ <script src= "../public/service/SearchService.js"></script>
 <script src= "../public/service/bookingsService.js"></script>
 <script src= "../public/service/ratingService.js"></script>
 <script src= "../public/service/requestService.js"></script>
@@ -60,6 +70,7 @@
 <a ng-click="Chat()" class="w3-bar-item w3-button">Contact Us</a>
 <a ng-click="ViewReq()"  class="w3-bar-item w3-button">Admin</a>
 </div>
+
 <div zclass="w3-main" id="main">
 <button class="w3-button  w3-xlarge" onclick="w3_open()">&#9776;</button>
 </div>

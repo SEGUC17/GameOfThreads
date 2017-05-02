@@ -91,21 +91,21 @@ button {
   <div class="container">
 
     <label>Name</label></br>
-    <input ng-model="customer.Name"/></br>
+    <input ng-model="customer.Name" required /></br>
 
     <label>Address</label></br>
-    <input ng-model="customer.Address"/></br>
+    <input ng-model="customer.Address" required /></br>
 
     <label>PhoneNumber</label></br>
-    <input ng-model="customer.PhoneNumber"/></br>
+    <input ng-model="customer.PhoneNumber"required/></br>
     <label>email</label></br>
 
-       <input ng-model="customer.email"/></br>
+       <input ng-model="customer.email"required/></br>
        <label>Password</label></br>
-       <input ng-model="customer.password" type="password" /></br>
+       <input ng-model="customer.password" type="password"required /></br>
 
        <label>Re-enter your Passowrd</label></br>
-     	<input ng-model="customer.password2" type="password" /></br>
+     	<input ng-model="customer.password2" type="password" required/></br>
 
     <div ng-controller = "SignUpCtrlCust">
     <button ng-click="signupC(customer)">Sign Up</button>

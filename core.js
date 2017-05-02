@@ -39,6 +39,9 @@ App.config(function($routeProvider) {
       .when('/BusinessPackages',{
         templateUrl: 'public/views/BusinessPackages.html'
       })
+      .when('/ServiceDetails',{
+        templateUrl: 'public/views/ServiceDetails.html'
+      })
       .when('/delete',{
         templateUrl: 'public/views/delete.html'
       })
@@ -74,9 +77,14 @@ App.config(function($routeProvider) {
          .when('/logout', {
        templateUrl: 'public/views/Customerlogin.html'
      })
-     .when('/payment', {
-   templateUrl: 'public/views/payment.html'
-  })
+  .when('/pay', {
+   templateUrl: 'public/views/payment.html',
+   controller : 'StripeCtrl'
+})
+.when('/chat', {
+  templateUrl: 'public/views/Chat.html',
+  controller : 'SidebarCtrl'
+})
     .otherwise({
       redirectTo: '/'
     });

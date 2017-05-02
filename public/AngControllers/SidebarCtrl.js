@@ -5,7 +5,7 @@ $scope.ViewReq=function(){
     $location.url('/ViewReq');
   };
   $scope.Chat=function(){
-    $location.url('/Chat');
+    $location.url('/chat');
   };
 
     $scope.Results= function(){

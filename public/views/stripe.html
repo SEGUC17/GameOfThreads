@@ -1,0 +1,10 @@
+<script type="text/javascript"
+        src="bower_components/angular-payments/lib/angular-payments.js">
+</script>
+
+<form stripe-form="stripeCallback">
+    <input ng-model="number" placeholder="Card Number" />
+    <input ng-model="expiry" placeholder="Expiration" />
+    <input ng-model="cvc" placeholder="CVC" />
+    <button type="submit">Submit</button>
+</form>
